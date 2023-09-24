@@ -1,0 +1,11 @@
+[localrepobaseos]
+name=BaseOS
+enabled=1
+gpgcheck=0
+baseurl=http://192.168.71.134/AppStream
+
+[localrepoappstream]
+name=AppStream
+enabled=1
+gpgcheck=0
+baseurl=http://192.168.71.134/BaseOS

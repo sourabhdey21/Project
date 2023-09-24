@@ -1,0 +1,15 @@
+---
+- name: Disable SELinux
+  hosts: all
+  become: yes
+  tasks:
+    - name: move default selinux config file 
+      shell: |
+        mv /etc/selinux/config  /etc/selinux/config_backup
+    - name: copy disabled tags selinux config file 
+      copy:
+        src: /home/sourabh/unms/config
+        dest: /etc/selinux/config
+      become: yes
+  vars:
+    ansible_become_pass: admin

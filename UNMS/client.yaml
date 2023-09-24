@@ -1,0 +1,32 @@
+---
+- name: Register clients
+  hosts: client_svr1
+  become: yes
+  tasks:
+    - name: move default redhat repository 
+      shell: | 
+        mv /etc/yum.repos.d/redhat.repo /etc/yum.repos.d/redhat.repo.bkp 
+
+    - name: copy client repo on remote server 
+      copy:
+        src: client.repo
+        dest:  /etc/yum.repos.d/
+    
+    - name: install  tmux 
+      package:
+        name: tmux
+        state: present
+    
+    - name: install compat libcc
+      become: yes
+      command: yum install /tmp/compat-libstdc++-33-3.2.3-72.el7.x86_64.rpm -y 
+    
+    - name: install compat db 
+      become: yes 
+      command: yum install /tmp/compat-db-4.7.25-28.el7.x86_64.rpm -y 
+      
+
+    
+  vars:
+    ansible_become_pass: admin
+      

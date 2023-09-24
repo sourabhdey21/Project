@@ -1,0 +1,11 @@
+[localrepobaseos]
+name=BaseOS
+enabled=1
+gpgcheck=0
+baseurl=file:///mnt/BaseOS/
+
+[localrepoappstream]
+name=AppStream
+enabled=1
+gpgcheck=0
+baseurl=file:///mnt/AppStream/

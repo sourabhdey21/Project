@@ -1,0 +1,20 @@
+On Windows VM
+OA Agent
+Command to be run from the directory where the OA Agent files are present:
+cscript oainstall.vbs -i -a -srv d1nudvwobmgtw01.devarmy.mil -cert_srv d1nudvwobmgtw01.devarmy.mil 
+
+UD Agent
+Command to be run from the directory where the UD Agent files are present:
+msiexec /i ud-agent-win32-x86.msi /log <log_file_name.txt> /quiet SETUPTYPE=Enterprise PORT=2738 TIMEOUT=172800 CERTPATH=<directory>/discoveryResources PERIOD=90 SOFTWAREUTILIZATION=ON URL0=d1nuovwossudc02.devarmy.mil 
+
+On RHEL VM
+
+OA Agent
+Pre req: Install “motif” package
+Command to be run from the directory where the OA Agent files are present:
+oainstall.sh -i -a -srv dsnudvwobmdgw01.devarmy.mil -cert_srv dsnudvwobmdgw01.devarmy.mil
+
+UD Agent
+Pre req: Install “glibc 2.0” package
+Command to be run from the directory where the UD Agent files are present:
+./agentinstall.sh –port 2738 –cert <directory>/discoveryResources –period 365 ud-agent-linux-x64.rpm
